@@ -1,0 +1,15 @@
+<h2>{{title}}</h2>
+<nav>
+    <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+    <a [routerLink]="['/heroes']" routerLinkActive="active">Heroes</a>
+    <a [routerLink]="['/request']" routerLinkActive="active">SimpleHttpRequest</a>
+    <a [routerLink]="['/host']" routerLinkActive="active">HostElement</a>
+    <a [routerLink]="['/login']" routerLinkActive="active">Login</a>
+    <a [routerLink]="['/tabs']" routerLinkActive="active">Tabs_Example</a>
+    <a [routerLink]="['/tabs2']" routerLinkActive="active">Tabs_Example2</a>
+    <a [routerLink]="['/add']" routerLinkActive="active">Add Commponent</a>
+    <a [routerLink]="['/dynamiccompiler']" routerLinkActive="active">Dynamic Compiler</a>
+    <a [routerLink]="['/templatedemo']" routerLinkActive="active">Template Demo</a>
+</nav>
+<!--router-outlet 也有事件-->
+<router-outlet (activate)="onActivate($event)" (deactivate)="onDeactivate($event)"></router-outlet>

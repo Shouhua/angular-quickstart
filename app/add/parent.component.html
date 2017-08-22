@@ -1,0 +1,4 @@
+<label for="comp">
+<input type="text" placeholder="Something" id="comp" #comp1
+    (keyup.enter)="comp = comp1.value" (blur)="comp=comp1.value"/>
+<button (click)="addComp()">Add Component!</button>

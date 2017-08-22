@@ -1,0 +1,20 @@
+/**
+ * Created by shouhua on 2016/5/22.
+ */
+import { Component } from '@angular/core';
+
+@Component({
+    moduleId:module.id,
+    selector:'my-app',
+    templateUrl:'app.component.html',
+    styleUrls:['app.component.css']
+})
+export class AppComponent{
+    title='Tour of Heroes';
+    onActivate(event){
+        console.log(event);
+    }
+    onDeactivate(event){
+        console.log(event);
+    }
+}

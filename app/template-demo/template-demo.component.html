@@ -1,0 +1,19 @@
+<h1>Template Example</h1>
+<p>
+    <a href (click)="toggleComponent(); $event.preventDefault();">Toggle outside value</a>
+</p>
+<switcher>
+    <ng-template #itemTemplate let-item>
+        <!--<template #itemTemplate let-item>-->
+        <b>{{ item.label }}:</b> {{item.value}}
+        <br/>
+        <div *ngIf="outsideValue === 'on'">
+            <first-inserted></first-inserted>
+        </div>
+        <div *ngIf="outsideValue !== 'on'">
+            <second-inserted></second-inserted>
+        </div>
+        {{ outsideValue }}
+        <!--</template>-->
+    </ng-template>
+</switcher>
