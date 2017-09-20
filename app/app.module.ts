@@ -1,21 +1,22 @@
 /**
  * Created by shouhua on 2016/8/10.
  */
-import { NgModule, enableProdMode} from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { COMPILER_PROVIDERS } from '@angular/compiler';
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule} from '@angular/forms'
-import { HttpModule, XHRBackend} from '@angular/http'
+import { FormsModule } from '@angular/forms'
+import { HttpModule, XHRBackend } from '@angular/http'
 
-import {MyResolver} from './service/myresolver.resolver';
+import { MyResolver } from './service/myresolver.resolver';
 import { DynamicModule } from './dynamic-compiler/dynamic.module';
 
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { HeroService} from "./service/hero.service";
+import { HeroService } from "./service/hero.service";
 import { Declarations } from './app.declarations';
-
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomRouteReuseStrategy } from './utils/customRouteReuseStrategy';
 
 
 //enableProdMode();
@@ -25,16 +26,19 @@ import { Declarations } from './app.declarations';
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(routes),
+        RouterModule.forRoot(routes, {
+            //enableTracing: true
+        }),
         FormsModule,
         HttpModule,
         DynamicModule.forRoot(),
         //AddModule
     ],
     declarations: [...Declarations],
-    bootstrap: [ AppComponent ],
-    providers:[HeroService, MyResolver, {provide:'Random', useValue:Math.random()},
-        COMPILER_PROVIDERS
+    bootstrap: [AppComponent],
+    providers: [HeroService, MyResolver, { provide: 'Random', useValue: Math.random() },
+        COMPILER_PROVIDERS,
+        { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
     ],
 })
 export class AppModule {
